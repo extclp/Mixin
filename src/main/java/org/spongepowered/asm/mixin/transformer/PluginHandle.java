@@ -134,7 +134,7 @@ class PluginHandle {
 
         try {
             this.plugin.preApply(targetClassName, targetClass, mixinClassName, mixinInfo);
-        } catch (Exception ex) {
+        } catch (AbstractMethodError ex) {
             this.mode = CompatibilityMode.FAILED;
             throw ex;
         }
@@ -154,7 +154,7 @@ class PluginHandle {
 
         try {
             this.plugin.postApply(targetClassName, targetClass, mixinClassName, mixinInfo);
-        } catch (Exception ex) {
+        } catch (AbstractMethodError ex) {
             this.mode = CompatibilityMode.FAILED;
             throw ex;
         }
