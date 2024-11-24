@@ -79,12 +79,7 @@ repositories {
 }
 
 sourceSets {
-    legacy {
-        ext.languageVersion = 8
-        ext.compatibility = '1.8'
-    }
     main {
-        compileClasspath += legacy.output
         ext.languageVersion = 8
         ext.compatibility = '1.8'
     }
@@ -241,7 +236,6 @@ dependencies {
 
 javadoc {
     exclude '**/throwables'
-    classpath += sourceSets.legacy.output
     source sourceSets.ap.allJava
     options.encoding = 'UTF-8'
     exclude {
@@ -268,14 +262,14 @@ eclipse {
             entries.removeAll { it.kind == 'lib' && it.path =~ ~/modlauncher-$legacyModlauncherVersion/ }
             entries.removeAll { it.kind == 'src' && it.path =~ ~/modlauncher4/ }
             entries.removeAll { it.kind == 'lib' && it.path =~ ~/log4j.*beta9/ }
-            
+
             // Mark everything else as a module
             entries.findAll { it.kind == "con" && it.path =~ /gradleclasspathcontainer$/ }.each {
                 it.entryAttributes['module'] = 'true'
             }
         }
     }
-    
+
     project {
         resourceFilter {
             appliesTo = 'FOLDERS'
