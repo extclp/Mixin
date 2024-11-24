@@ -229,8 +229,6 @@ dependencies {
     bridgeImplementation 'org.apache.logging.log4j:log4j-core:2.0-beta9'
     bridgeImplementation "org.ow2.asm:asm-commons:$legacyForgeAsmVersion"
     
-    legacyImplementation "org.ow2.asm:asm-tree:$asmVersion"
-    
     modularityCompileOnly 'org.apache.logging.log4j:log4j-core:2.11.2'
 }
 
